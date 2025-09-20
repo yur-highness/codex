@@ -6,7 +6,7 @@ import Error from "../Error";
 const CodeExpForm = () => {
   const [formState, formAction, isPending] = useActionState(explain, null);
   return (
-    <div className="w-full h-[45vh] mt-10 max-w-xl mx-auto bg-gradient-to-br from-[#18181b]/80 via-[#27272a]/70 to-[#18181b]/80 rounded-xl shadow-xl backdrop-blur-md border border-white/10 relative overflow-y-auto">
+    <div className="w-full h-[85vh] mt-10 max-w-xl mx-auto bg-gradient-to-br from-[#18181b]/80 via-[#27272a]/70 to-[#18181b]/80 rounded-xl shadow-xl backdrop-blur-md border border-white/10 relative overflow-y-auto">
         <form action={formAction} className="flex flex-col gap-6 mt-4">
         <div className="flex flex-col gap-2 justify-center items-center">
           <label className="block text-base font-semibold text-white/80 text-center">Language</label>
@@ -51,7 +51,7 @@ const CodeExpForm = () => {
         {isPending ? (
           <p className="bg-gradient-to-r from-blue-400/20 to-purple-400/20 animate-pulse my-2 w-48 p-2 rounded text-white/80 text-center shadow">Thinking...</p>
         ) : formState?.success ? (
-          <CodeExplain explanation={formState?.data.explanation} />
+          <CodeExplain explanation={formState?.data.response?.candidates?.[0]?.content?.parts?.[0]?.text} />
         ) : (
           formState?.success === false && (
             <Error error={formState?.error} />
