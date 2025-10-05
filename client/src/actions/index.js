@@ -5,7 +5,7 @@ export async function explain(prevState, formData) {
   const language = formData.get("language");
   console.log(`Generating explanation for ${language}`);
   try {
-    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/codex`, {
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}codex`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({  language, code }),
